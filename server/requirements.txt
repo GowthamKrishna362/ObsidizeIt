@@ -1,0 +1,8 @@
+langchain
+langchain-ollama
+flask
+ollama
+langchain-core
+pymupdf
+pypdf
+requests

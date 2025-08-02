@@ -1,0 +1,1 @@
+SUMMARY_PROMPT = "Summarize the following text into bullet points. Add headers where appropriate."

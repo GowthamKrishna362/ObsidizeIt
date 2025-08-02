@@ -1,0 +1,160 @@
+// Color palette
+$primary-color: #646cff;
+$secondary-color: #61dafb;
+$accent-color: #535bf2;
+$success-color: #28a745;
+$warning-color: #ffc107;
+$error-color: #dc3545;
+$info-color: #17a2b8;
+
+// Light theme colors
+$text-primary-light: #213547;
+$text-secondary-light: #666;
+$text-muted-light: #999;
+$text-light-light: #fff;
+
+$bg-primary-light: #ffffff;
+$bg-secondary-light: #f8f9fa;
+$bg-dark-light: #1a1a1a;
+
+$border-light-light: #e1e5e9;
+$border-medium-light: #ccc;
+$border-dark-light: #999;
+
+// Dark theme colors
+$text-primary-dark: #e1e5e9;
+$text-secondary-dark: #b0b8c1;
+$text-muted-dark: #6c757d;
+$text-light-dark: #ffffff;
+
+$bg-primary-dark: #1a1a1a;
+$bg-secondary-dark: #2d2d2d;
+$bg-dark-dark: #0d1117;
+
+$border-light-dark: #404040;
+$border-medium-dark: #555;
+$border-dark-dark: #666;
+
+// Default theme (light)
+$text-primary: $text-primary-light;
+$text-secondary: $text-secondary-light;
+$text-muted: $text-muted-light;
+$text-light: $text-light-light;
+
+$bg-primary: $bg-primary-light;
+$bg-secondary: $bg-secondary-light;
+$bg-dark: $bg-dark-light;
+
+$border-light: $border-light-light;
+$border-medium: $border-medium-light;
+$border-dark: $border-dark-light;
+
+// CSS Custom Properties for theme switching
+:root {
+  // Light theme (default)
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+  --accent-color: #{$accent-color};
+  --success-color: #{$success-color};
+  --warning-color: #{$warning-color};
+  --error-color: #{$error-color};
+  --info-color: #{$info-color};
+
+  --text-primary: #{$text-primary-light};
+  --text-secondary: #{$text-secondary-light};
+  --text-muted: #{$text-muted-light};
+  --text-light: #{$text-light-light};
+
+  --bg-primary: #{$bg-primary-light};
+  --bg-secondary: #{$bg-secondary-light};
+  --bg-dark: #{$bg-dark-light};
+
+  --border-light: #{$border-light-light};
+  --border-medium: #{$border-medium-light};
+  --border-dark: #{$border-dark-light};
+}
+
+// Dark theme
+[data-theme="dark"] {
+  --text-primary: #{$text-primary-dark};
+  --text-secondary: #{$text-secondary-dark};
+  --text-muted: #{$text-muted-dark};
+  --text-light: #{$text-light-dark};
+
+  --bg-primary: #{$bg-primary-dark};
+  --bg-secondary: #{$bg-secondary-dark};
+  --bg-dark: #{$bg-dark-dark};
+
+  --border-light: #{$border-light-dark};
+  --border-medium: #{$border-medium-dark};
+  --border-dark: #{$border-dark-dark};
+}
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// Border radius
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+
+// Typography
+$font-family-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  "Roboto", sans-serif;
+$font-family-mono: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas,
+  "Courier New", monospace;
+
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 24px;
+$font-size-3xl: 30px;
+$font-size-4xl: 36px;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// Transitions
+$transition-fast: 150ms;
+$transition-normal: 300ms;
+$transition-slow: 500ms;
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// Z-index
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;

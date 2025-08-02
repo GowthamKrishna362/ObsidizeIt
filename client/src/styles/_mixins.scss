@@ -1,0 +1,54 @@
+// Import variables
+@use "./variables" as *;
+@use "sass:color";
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-style {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: $border-radius-md;
+  padding: $spacing-sm $spacing-lg;
+  font-size: $font-size-md;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: all $transition-normal ease;
+
+  &:hover {
+    background-color: color.adjust($primary-color, $lightness: -10%);
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin textarea-style {
+  width: 100%;
+  min-height: 200px;
+  padding: $spacing-md;
+  border: 2px solid var(--border-light);
+  border-radius: $border-radius-md;
+  font-family: $font-family-primary;
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+  resize: vertical;
+  transition: border-color $transition-normal ease;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.1);
+  }
+}

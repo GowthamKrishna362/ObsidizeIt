@@ -1,0 +1,224 @@
+// Import variables, mixins and main styles
+@use "./variables" as *;
+@use "./mixins" as *;
+@use "./main.scss";
+
+// App-specific styles
+.obsidize-app {
+  @extend .app-container;
+
+  .obsidize-header {
+    @extend .app-header;
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: $spacing-md;
+
+      .logo {
+        font-size: 3rem;
+        color: var(--primary-color);
+      }
+
+      .theme-toggle {
+        background: none;
+        border: 2px solid var(--border-light);
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all $transition-normal ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--bg-secondary);
+
+        &:hover {
+          border-color: var(--primary-color);
+          transform: scale(1.05);
+          box-shadow: $shadow-md;
+        }
+
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+    }
+
+    .title {
+      font-size: $font-size-4xl;
+      font-weight: $font-weight-bold;
+      color: var(--text-primary);
+      margin-bottom: $spacing-sm;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: $font-size-lg;
+      margin-bottom: $spacing-xl;
+    }
+  }
+
+  .obsidize-content {
+    @extend .app-content;
+
+    .input-container {
+      margin-bottom: $spacing-lg;
+
+      .input-label {
+        display: block;
+        text-align: left;
+        margin-bottom: $spacing-sm;
+        font-weight: $font-weight-semibold;
+        color: var(--text-primary);
+      }
+
+      .text-input {
+        @include textarea-style;
+        min-height: 300px;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        border-color: var(--border-light);
+
+        &::placeholder {
+          color: var(--text-muted);
+          font-style: italic;
+        }
+
+        &:focus {
+          border-color: var(--primary-color);
+          box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.1);
+        }
+      }
+    }
+
+    .action-buttons {
+      @extend .button-section;
+
+      .obsidize-btn {
+        @include button-style;
+        font-weight: $font-weight-semibold;
+        min-width: 120px;
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+          transform: none;
+
+          &:hover {
+            transform: none;
+            box-shadow: none;
+          }
+        }
+      }
+
+      .clear-btn {
+        @include button-style;
+        background-color: transparent;
+        color: var(--text-secondary);
+        border: 2px solid var(--border-light);
+
+        &:hover {
+          background-color: var(--bg-secondary);
+          color: var(--text-primary);
+          border-color: var(--border-medium);
+        }
+      }
+    }
+  }
+
+  .status-message {
+    margin-top: $spacing-md;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius-md;
+    font-weight: $font-weight-medium;
+
+    &.success {
+      background-color: rgba(40, 167, 69, 0.1);
+      color: var(--success-color);
+      border: 1px solid rgba(40, 167, 69, 0.2);
+    }
+
+    &.error {
+      background-color: rgba(220, 53, 69, 0.1);
+      color: var(--error-color);
+      border: 1px solid rgba(220, 53, 69, 0.2);
+    }
+
+    &.loading {
+      background-color: rgba(23, 162, 184, 0.1);
+      color: var(--info-color);
+      border: 1px solid rgba(23, 162, 184, 0.2);
+    }
+  }
+}
+
+// Loading animation
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+// Success animation
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+// Responsive design
+@media (max-width: $breakpoint-md) {
+  .obsidize-app {
+    .obsidize-header {
+      .header-top {
+        flex-direction: column;
+        gap: $spacing-md;
+        margin-bottom: $spacing-lg;
+
+        .theme-toggle {
+          width: 40px;
+          height: 40px;
+          font-size: 1.25rem;
+        }
+      }
+
+      .title {
+        font-size: $font-size-3xl;
+      }
+    }
+
+    .obsidize-content {
+      .action-buttons {
+        flex-direction: column;
+        width: 100%;
+
+        .obsidize-btn,
+        .clear-btn {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

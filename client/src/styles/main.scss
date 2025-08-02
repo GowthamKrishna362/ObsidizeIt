@@ -1,0 +1,144 @@
+// Import variables and mixins
+@use "./variables" as *;
+@use "./mixins" as *;
+
+// Base styles
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family-primary;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: $line-height-normal;
+  transition: background-color $transition-normal ease,
+    color $transition-normal ease;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--bg-primary);
+  transition: background-color $transition-normal ease;
+}
+
+// App container
+.app-container {
+  @include flex-center;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: $spacing-lg;
+  background-color: var(--bg-primary);
+  transition: background-color $transition-normal ease;
+
+  .app-header {
+    margin-bottom: $spacing-xl;
+
+    h1 {
+      color: var(--primary-color);
+      font-size: $font-size-4xl;
+      font-weight: $font-weight-bold;
+      margin: 0 0 $spacing-sm 0;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: $font-size-lg;
+      margin: 0;
+    }
+  }
+
+  .app-content {
+    width: 100%;
+    max-width: 600px;
+
+    .input-section {
+      margin-bottom: $spacing-lg;
+
+      textarea {
+        @include textarea-style;
+      }
+    }
+
+    .button-section {
+      @include flex-center;
+      gap: $spacing-md;
+
+      button {
+        @include button-style;
+
+        &.secondary {
+          background-color: transparent;
+          color: var(--primary-color);
+          border: 2px solid var(--primary-color);
+
+          &:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Utility classes
+.text-center {
+  text-align: center;
+}
+
+.mb-16 {
+  margin-bottom: $spacing-md;
+}
+
+.mb-24 {
+  margin-bottom: $spacing-lg;
+}
+
+// Responsive design
+@media (max-width: $breakpoint-md) {
+  #root {
+    padding: 1rem;
+  }
+
+  .app-container {
+    padding: $spacing-md;
+
+    .app-header {
+      h1 {
+        font-size: $font-size-3xl;
+      }
+    }
+
+    .app-content {
+      .button-section {
+        flex-direction: column;
+        width: 100%;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// Animation keyframes
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}

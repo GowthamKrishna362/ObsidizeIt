@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "version": "1.0.0",
+    "name": "ObsidizeIt",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "sidePanel"
+    ],
+    "host_permissions": [
+        "http://localhost/*"
+   ],
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "side_panel": {
+        "default_path": "index.html"
+    },
+    "commands": {
+    "toggle-side-panel": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+X"
+      },
+      "description": "Toggle the side panel"
+    },
+    "add-to-obsidizer": {
+        "suggested_key": {
+            "default": "Ctrl+Shift+Y"
+        },
+        "description": "Add to Obsidizer"
+    }
+  }
+}
