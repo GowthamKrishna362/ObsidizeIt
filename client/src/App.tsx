@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { RUNTIME_MESSAGES } from "./constants";
+import { obsidize } from "./api";
 import "./styles/App.scss";
 
 type RuntimeMessage = {
@@ -13,11 +14,10 @@ type ThemeType = 'light' | 'dark';
 function App() {
   const [input, setInput] = useState<string>("");
   const [theme, setTheme] = useState<ThemeType>('dark');
+  const [targetFile, setTargetFile] = useState<File | null>(null);
 
   useEffect(() => {
-    // Set initial theme to dark
     document.documentElement.setAttribute('data-theme', 'dark');
-    
     chrome.runtime.onMessage.addListener((message: RuntimeMessage) => {
       if (message.type === RUNTIME_MESSAGES.ADD_TO_OBSIDIZER) {
         setInput((prev) => prev + "\n" + message.text);
@@ -37,15 +37,7 @@ function App() {
     }
 
     try {
-       fetch("http://localhost:5000/obsidize", {
-        method: "POST",
-        body: JSON.stringify({
-          input: input,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      obsidize(input, targetFile?.name || null);
       setInput("");
     } catch (error) {
       console.error('Error obsidizing text:', error);
@@ -54,6 +46,14 @@ function App() {
 
   const handleClear = () => {
     setInput("");
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (file) {
+      setTargetFile(file);
+    }
   };
 
   return (
@@ -74,6 +74,7 @@ function App() {
       
       <div className="obsidize-content">
         <div className="input-container">
+          <input type="file" id="obsidize-checkbox" accept=".txt, .md" onChange={handleFileChange}/>
           <label className="input-label" htmlFor="text-input">
             Enter your text to obsidize:
           </label>

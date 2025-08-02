@@ -2,14 +2,10 @@ from flask import Flask, jsonify, request
 from obsidizer import handle_obsidize
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return "Hello, World!"
-
 @app.route('/obsidize', methods=['POST'])
 def obsidize():
     data = request.json
-    print(data)
+    print("Received data: ", data)
     
     input_text = data['input']
     if 'target_file' in data:
@@ -21,5 +17,4 @@ def obsidize():
     return jsonify({'message': 'Data received', 'target_file': target_file}), 200
 
 if __name__ == '__main__':
-    # Enable threading to allow parallel execution for different files
     app.run(debug=True, threaded=True)
